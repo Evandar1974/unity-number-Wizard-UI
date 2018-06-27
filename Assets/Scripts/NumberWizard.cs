@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NumberWizard : MonoBehaviour {
 
@@ -25,18 +26,10 @@ public class NumberWizard : MonoBehaviour {
         max = guess;
         NextGuess();
     }
-    public void CorrectGuess()
-    {
-        Application.LoadLevel("Lose");
-    }
-
-
     void StartGame(){
 		max = 1000;
 		min = 1;
-        NextGuess();
-        
-		
+        NextGuess();	
 	}
 	
 	void NextGuess(){
@@ -45,9 +38,11 @@ public class NumberWizard : MonoBehaviour {
         maxGuessesAllowed = maxGuessesAllowed - 1;
         if (maxGuessesAllowed <= 0)
         {
-            Application.LoadLevel("Win");
-        }
-	
-		
+            SceneManager.LoadScene("Lose");
+        }	
 	}
+
+
+
+
 }
